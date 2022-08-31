@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/paas-mate/gutil v0.0.1
-	go.uber.org/zap v1.22.0
+	go.uber.org/zap v1.23.0
 )
 
 require (
