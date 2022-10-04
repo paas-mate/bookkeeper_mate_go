@@ -13,6 +13,8 @@ var (
 	BkStandaloneConfig         = filepath.FromSlash(BkConfigDir + "/standalone.conf")
 	BkOriginalConfig           = filepath.FromSlash(BkConfigDir + "/bk_server_original.conf")
 	BkOriginalStandaloneConfig = filepath.FromSlash(BkConfigDir + "/standalone_original.conf")
+	BkDataDir                  = filepath.FromSlash(BkHome + "/data")
+	BkJournalDir               = filepath.FromSlash(BkHome + "/journal")
 )
 
 // mate

@@ -28,7 +28,15 @@ func ConfigCluster() error {
 		configProp.Set("useHostNameAsBookieID", "true")
 	}
 	configProp.Set("listeningInterface", "eth0")
+	// http
 	configProp.Set("httpServerEnabled", "true")
+	configProp.Set("httpServerPort", "8080")
+	configProp.Set("statsProviderClass", "org.apache.bookkeeper.stats.prometheus.PrometheusMetricsProvider")
+	configProp.Set("httpServerClass", "org.apache.bookkeeper.http.vertx.VertxHttpServer")
+	// data dir
+	configProp.Set("ledgerDirectories", path.BkDataDir)
+	configProp.Set("journalDirectories", path.BkJournalDir)
+	// zookeeper
 	configProp.Set("zkServers", config.ZkAddress)
 	configProp.Set("metadataServiceUri", "zk+hierarchical://"+config.MetaDataServiceUri+"/ledgers")
 	return configProp.Write(path.BkConfig)
