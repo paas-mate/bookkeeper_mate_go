@@ -33,9 +33,14 @@ func ConfigCluster() error {
 	configProp.Set("httpServerPort", "8080")
 	configProp.Set("statsProviderClass", "org.apache.bookkeeper.stats.prometheus.PrometheusMetricsProvider")
 	configProp.Set("httpServerClass", "org.apache.bookkeeper.http.vertx.VertxHttpServer")
-	// data dir
+	// data
 	configProp.Set("ledgerDirectories", path.BkDataDir)
+	// journal
 	configProp.Set("journalDirectories", path.BkJournalDir)
+	configProp.SetInt("journalMaxSizeMB", config.JournalMaxSizeMB)
+	configProp.SetInt("journalMaxBackups", config.JournalMaxBackups)
+	configProp.SetBool("journalSyncData", config.JournalSyncData)
+	configProp.SetBool("journalWriteData", config.JournalWriteData)
 	// zookeeper
 	configProp.Set("zkServers", config.ZkAddress)
 	configProp.Set("metadataServiceUri", "zk+hierarchical://"+config.MetaDataServiceUri+"/ledgers")
