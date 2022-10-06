@@ -41,6 +41,7 @@ func ConfigCluster() error {
 	configProp.SetInt("journalMaxBackups", config.JournalMaxBackups)
 	configProp.SetBool("journalSyncData", config.JournalSyncData)
 	configProp.SetBool("journalWriteData", config.JournalWriteData)
+	configProp.SetInt("journalPreAllocSizeMB", config.JournalPreAllocSizeMB)
 	// zookeeper
 	configProp.Set("zkServers", config.ZkAddress)
 	configProp.Set("metadataServiceUri", "zk+hierarchical://"+config.MetaDataServiceUri+"/ledgers")

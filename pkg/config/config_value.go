@@ -15,12 +15,17 @@ var (
 	BkTlsEnable        bool
 )
 
+var (
+	logSizeLimit int
+)
+
 // journal config
 var (
-	JournalMaxSizeMB  int
-	JournalMaxBackups int
-	JournalSyncData   bool
-	JournalWriteData  bool
+	JournalMaxSizeMB      int
+	JournalMaxBackups     int
+	JournalSyncData       bool
+	JournalWriteData      bool
+	JournalPreAllocSizeMB int
 )
 
 func init() {
@@ -38,4 +43,5 @@ func init() {
 	JournalMaxBackups = gutil.GetEnvInt("BOOKKEEPER_JOURNAL_MAX_BACKUPS", 5)
 	JournalSyncData = gutil.GetEnvBool("BOOKKEEPER_JOURNAL_SYNC_DATA", true)
 	JournalWriteData = gutil.GetEnvBool("BOOKKEEPER_JOURNAL_WRITE_DATA", true)
+	JournalPreAllocSizeMB = gutil.GetEnvInt("BOOKKEEPER_JOURNAL_PRE_ALLOC_SIZE_MB", 16)
 }

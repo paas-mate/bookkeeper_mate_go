@@ -16,9 +16,6 @@ COPY --from=build /opt/sh/compile/cmd/config/config_gen /opt/sh/bookkeeper/mate/
 COPY config/bk_server_original.conf /opt/sh/bookkeeper/conf/bk_server_original.conf
 COPY config/standalone_original.conf /opt/sh/bookkeeper/conf/standalone_original.conf
 
-# due to Unrecognized VM option 'AggressiveOpts'
-COPY config/common_mod.sh /opt/sh/bookkeeper/bin/common.sh
-
 WORKDIR /opt/sh/bookkeeper
 
 CMD ["/usr/bin/dumb-init", "bash", "-vx", "/opt/sh/bookkeeper/mate/scripts/start.sh"]
