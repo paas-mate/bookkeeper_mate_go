@@ -16,7 +16,7 @@ var (
 )
 
 var (
-	logSizeLimit int
+	LogSizeLimit int64
 )
 
 // journal config
@@ -38,6 +38,8 @@ func init() {
 	KubernetesCluster = gutil.GetEnvBool("KUBERNETES_CLUSTER", false)
 	ZkTlsEnable = gutil.GetEnvBool("ZOOKEEPER_TLS_ENABLE", false)
 	BkTlsEnable = gutil.GetEnvBool("BOOKKEEPER_TLS_ENABLE", false)
+	// data
+	LogSizeLimit = gutil.GetEnvInt64("BOOKKEEPER_LOG_SIZE_LIMIT", int64(1*1024*1024*1024))
 	// journal
 	JournalMaxSizeMB = gutil.GetEnvInt("BOOKKEEPER_JOURNAL_MAX_SIZE_MB", 2048)
 	JournalMaxBackups = gutil.GetEnvInt("BOOKKEEPER_JOURNAL_MAX_BACKUPS", 5)

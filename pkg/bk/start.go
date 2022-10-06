@@ -35,6 +35,7 @@ func ConfigCluster() error {
 	configProp.Set("httpServerClass", "org.apache.bookkeeper.http.vertx.VertxHttpServer")
 	// data
 	configProp.Set("ledgerDirectories", path.BkDataDir)
+	configProp.SetInt64("logSizeLimit", config.LogSizeLimit)
 	// journal
 	configProp.Set("journalDirectories", path.BkJournalDir)
 	configProp.SetInt("journalMaxSizeMB", config.JournalMaxSizeMB)
