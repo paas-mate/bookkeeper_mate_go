@@ -28,11 +28,6 @@ func ConfigCluster() error {
 		configProp.Set("useHostNameAsBookieID", "true")
 	}
 	configProp.Set("listeningInterface", "eth0")
-	// http
-	configProp.Set("httpServerEnabled", "true")
-	configProp.Set("httpServerPort", "8080")
-	configProp.Set("statsProviderClass", "org.apache.bookkeeper.stats.prometheus.PrometheusMetricsProvider")
-	configProp.Set("httpServerClass", "org.apache.bookkeeper.http.vertx.VertxHttpServer")
 	// data
 	configProp.Set("ledgerDirectories", path.BkDataDir)
 	configProp.SetInt64("logSizeLimit", config.LogSizeLimit)
@@ -76,6 +71,11 @@ func configCommon(prop *gutil.ConfigProperties) {
 		prop.Set("tlsTrustStoreType", "JKS")
 		prop.Set("tlsTrustStore", path.BkServerTrustCert)
 		prop.Set("tlsTrustStorePasswordPath", path.BkServerTrustPassword)
+	        // http
+	        configProp.Set("httpServerEnabled", "true")
+	        configProp.Set("httpServerPort", "8080")
+	        configProp.Set("statsProviderClass", "org.apache.bookkeeper.stats.prometheus.PrometheusMetricsProvider")
+	        configProp.Set("httpServerClass", "org.apache.bookkeeper.http.vertx.VertxHttpServer")
 	}
 }
 
