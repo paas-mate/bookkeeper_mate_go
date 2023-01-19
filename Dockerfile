@@ -1,21 +1,21 @@
 FROM ttbb/base:go AS build
-COPY . /opt/sh/compile
-WORKDIR /opt/sh/compile/pkg
+COPY . /opt/compile
+WORKDIR /opt/compile/pkg
 RUN go build -o bookkeeper_mate .
-WORKDIR /opt/sh/compile/cmd/config
+WORKDIR /opt/compile/cmd/config
 RUN go build -o config_gen .
 
 
 FROM ttbb/bookkeeper:nake
 
-COPY docker-build /opt/sh/bookkeeper/mate
+COPY docker-build /opt/bookkeeper/mate
 
-COPY --from=build /opt/sh/compile/pkg/bookkeeper_mate /opt/sh/bookkeeper/mate/bookkeeper_mate
-COPY --from=build /opt/sh/compile/cmd/config/config_gen /opt/sh/bookkeeper/mate/config_gen
+COPY --from=build /opt/compile/pkg/bookkeeper_mate /opt/bookkeeper/mate/bookkeeper_mate
+COPY --from=build /opt/compile/cmd/config/config_gen /opt/bookkeeper/mate/config_gen
 
-COPY config/bk_server_original.conf /opt/sh/bookkeeper/conf/bk_server_original.conf
-COPY config/standalone_original.conf /opt/sh/bookkeeper/conf/standalone_original.conf
+COPY config/bk_server_original.conf /opt/bookkeeper/conf/bk_server_original.conf
+COPY config/standalone_original.conf /opt/bookkeeper/conf/standalone_original.conf
 
-WORKDIR /opt/sh/bookkeeper
+WORKDIR /opt/bookkeeper
 
-CMD ["/usr/bin/dumb-init", "bash", "-vx", "/opt/sh/bookkeeper/mate/scripts/start.sh"]
+CMD ["/usr/bin/dumb-init", "bash", "-vx", "/opt/bookkeeper/mate/scripts/start.sh"]
