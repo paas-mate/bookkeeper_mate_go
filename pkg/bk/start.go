@@ -3,9 +3,7 @@ package bk
 import (
 	"bookkeeper_mate_go/pkg/config"
 	"bookkeeper_mate_go/pkg/path"
-	"bookkeeper_mate_go/pkg/util"
 	"github.com/paas-mate/gutil"
-	"go.uber.org/zap"
 	"os"
 )
 
@@ -71,22 +69,10 @@ func configCommon(prop *gutil.ConfigProperties) {
 		prop.Set("tlsTrustStoreType", "JKS")
 		prop.Set("tlsTrustStore", path.BkServerTrustCert)
 		prop.Set("tlsTrustStorePasswordPath", path.BkServerTrustPassword)
-	        // http
-	        prop.Set("httpServerEnabled", "true")
-	        prop.Set("httpServerPort", "8080")
-	        prop.Set("statsProviderClass", "org.apache.bookkeeper.stats.prometheus.PrometheusMetricsProvider")
-	        prop.Set("httpServerClass", "org.apache.bookkeeper.http.vertx.VertxHttpServer")
-	}
-}
-
-func Start() error {
-	if config.ClusterEnable {
-		stdout, stderr, err := gutil.CallScript(path.BkStartScript)
-		util.Logger().Error("shell result ", zap.String("stdout", stdout), zap.String("stderr", stderr))
-		return err
-	} else {
-		stdout, stderr, err := gutil.CallScript(path.BkStartStandaloneScript)
-		util.Logger().Error("shell result ", zap.String("stdout", stdout), zap.String("stderr", stderr))
-		return err
+		// http
+		prop.Set("httpServerEnabled", "true")
+		prop.Set("httpServerPort", "8080")
+		prop.Set("statsProviderClass", "org.apache.bookkeeper.stats.prometheus.PrometheusMetricsProvider")
+		prop.Set("httpServerClass", "org.apache.bookkeeper.http.vertx.VertxHttpServer")
 	}
 }

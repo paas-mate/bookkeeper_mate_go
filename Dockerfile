@@ -1,7 +1,5 @@
 FROM ttbb/base:go AS build
 COPY . /opt/compile
-WORKDIR /opt/compile/pkg
-RUN go build -o bookkeeper_mate .
 WORKDIR /opt/compile/cmd/config
 RUN go build -o config_gen .
 
@@ -10,7 +8,6 @@ FROM ttbb/bookkeeper:nake
 
 COPY docker-build /opt/bookkeeper/mate
 
-COPY --from=build /opt/compile/pkg/bookkeeper_mate /opt/bookkeeper/mate/bookkeeper_mate
 COPY --from=build /opt/compile/cmd/config/config_gen /opt/bookkeeper/mate/config_gen
 
 COPY config/bk_server_original.conf /opt/bookkeeper/conf/bk_server_original.conf
