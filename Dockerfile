@@ -12,6 +12,7 @@ COPY --from=build /opt/compile/cmd/config/config_gen /opt/bookkeeper/mate/config
 
 COPY config/bk_server_original.conf /opt/bookkeeper/conf/bk_server_original.conf
 COPY config/standalone_original.conf /opt/bookkeeper/conf/standalone_original.conf
+COPY lib/* /opt/bookkeeper/lib
 
 WORKDIR /opt/bookkeeper
 
