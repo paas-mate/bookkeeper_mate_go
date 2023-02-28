@@ -38,7 +38,7 @@ func ConfigCluster() error {
 	configProp.SetInt("journalPreAllocSizeMB", config.JournalPreAllocSizeMB)
 	// zookeeper
 	configProp.Set("zkServers", config.ZkAddress)
-	configProp.Set("metadataServiceUri", "zk+hierarchical://"+config.MetaDataServiceUri+"/ledgers")
+	configProp.Set("metadataServiceUri", config.MetaDataServiceUri)
 	return configProp.Write(path.BkConfig)
 }
 
