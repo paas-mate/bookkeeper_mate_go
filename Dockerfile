@@ -1,4 +1,4 @@
-FROM ttbb/base:go AS build
+FROM shoothzj/base:go AS build
 COPY . /opt/compile
 WORKDIR /opt/compile/cmd/config
 RUN go build -o config_gen .
