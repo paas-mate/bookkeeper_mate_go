@@ -69,10 +69,10 @@ func configCommon(prop *gutil.ConfigProperties) {
 		prop.Set("tlsTrustStoreType", "JKS")
 		prop.Set("tlsTrustStore", path.BkServerTrustCert)
 		prop.Set("tlsTrustStorePasswordPath", path.BkServerTrustPassword)
-		// http
-		prop.Set("httpServerEnabled", "true")
-		prop.Set("httpServerPort", "8080")
-		prop.Set("statsProviderClass", "org.apache.bookkeeper.stats.prometheus.PrometheusMetricsProvider")
-		prop.Set("httpServerClass", "org.apache.bookkeeper.http.vertx.VertxHttpServer")
 	}
+	// http
+	prop.Set("httpServerEnabled", "true")
+	prop.Set("httpServerPort", "8080")
+	prop.Set("statsProviderClass", "org.apache.bookkeeper.stats.prometheus.PrometheusMetricsProvider")
+	prop.Set("httpServerClass", "org.apache.bookkeeper.http.vertx.VertxHttpServer")
 }
