@@ -41,7 +41,7 @@ func ConfigCluster() error {
 	configProp.Set("metadataServiceUri", config.MetaDataServiceUri)
 	//logger
 	configProp.Set("ledgerStorageClass",config.LedgerStorageClass)
-	configProp.Set("dbStorage_directIOEntryLogger",config.DbStorageDirectIOEntryLogger)
+	configProp.SetBool("dbStorage_directIOEntryLogger",config.DbStorageDirectIOEntryLogger)
 	return configProp.Write(path.BkConfig)
 }
 
