@@ -39,6 +39,9 @@ func ConfigCluster() error {
 	// zookeeper
 	configProp.Set("zkServers", config.ZkAddress)
 	configProp.Set("metadataServiceUri", config.MetaDataServiceUri)
+	//logger
+	configProp.Set("ledgerStorageClass",config.LedgerStorageClass)
+	configProp.Set("dbStorage_directIOEntryLogger",config.DbStorageDirectIOEntryLogger)
 	return configProp.Write(path.BkConfig)
 }
 

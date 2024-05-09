@@ -26,6 +26,8 @@ var (
 	JournalSyncData       bool
 	JournalWriteData      bool
 	JournalPreAllocSizeMB int
+	LedgerStorageClass    string
+	DbStorageDirectIOEntryLogger bool
 )
 
 func init() {
@@ -46,4 +48,6 @@ func init() {
 	JournalSyncData = gutil.GetEnvBool("BOOKKEEPER_JOURNAL_SYNC_DATA", true)
 	JournalWriteData = gutil.GetEnvBool("BOOKKEEPER_JOURNAL_WRITE_DATA", true)
 	JournalPreAllocSizeMB = gutil.GetEnvInt("BOOKKEEPER_JOURNAL_PRE_ALLOC_SIZE_MB", 16)
+	LedgerStorageClass = gutil.GetEnvStr("LEDGER_STORAGE_CLASS", "org.apache.bookkeeper.bookie.storage.ldb.DbLedgerStorage")
+	DbStorageDirectIOEntryLogger = gutil.GetEnvBool("DB_STORAGE_DIRECT_IO_ENTRY_LOGGER",false)
 }
