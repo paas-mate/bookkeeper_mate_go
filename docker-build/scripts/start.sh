@@ -11,6 +11,5 @@ else
     else
         bash -x $DIR/start-bookkeeper-standalone.sh
     fi
-    bash -x $DIR/start-daemon.sh
     tail -f /dev/null
 fi
